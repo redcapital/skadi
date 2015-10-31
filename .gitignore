@@ -1,0 +1,42 @@
+# common garbage
+.DS_Store
+.cache
+.project
+.settings
+.tmproj
+nbproject
+Thumbs.db
+desktop.ini
+
+# Compiled object files
+.obj
+*.o
+*.a
+Makefile*
+
+# Generated MOC, resource and UI files
+*.moc
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+
+# Debug and Release directories (created under Windows, not Linux)
+Debug/
+Release/
+
+# Built windows .exe and linux binaries
+*.exe
+*.dll
+*.out
+
+# Visual Studio files
+*.sln
+*.vcproj
+*.suo
+*.ncb
+*.user
+ 
+# QtCreator project files
+*.pro.user
+*.pro.user*
+*~
