@@ -29,9 +29,7 @@ void FileBackend::initFromSingleFile(const QFileInfo &file)
 			// Not an image or file type not supported
 			continue;
 		}
-		File::Type type = reader.supportsAnimation() ? File::ANIMATED : File::STATIC;
-
-		files.push_back(std::unique_ptr<File>(new File(entry.absoluteFilePath(), type)));
+		files.push_back(std::unique_ptr<File>(new File(entry.absoluteFilePath())));
 		if (!foundCurrent && entry == file) {
 			foundCurrent = true;
 			auto last = this->files.end();
@@ -47,6 +45,7 @@ void FileBackend::initFromSingleFile(const QFileInfo &file)
 File* FileBackend::getCurrentFile() const
 {
 	if (!files.empty()) {
+		(*this->currentFile)->loadMetadata();
 		return this->currentFile->get();
 	}
 	return nullptr;

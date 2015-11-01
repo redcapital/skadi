@@ -6,7 +6,8 @@ CONFIG += c++11
 
 SOURCES += main.cpp \
 	qmlengine.cpp \
-	filebackend.cpp
+	filebackend.cpp \
+    file.cpp
 
 HEADERS += \
 	qmlengine.h \

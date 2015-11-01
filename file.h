@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QString>
+#include <QSize>
 
 class File : public QObject
 {
@@ -10,6 +11,7 @@ class File : public QObject
 	Q_ENUMS(Type)
 	Q_PROPERTY(Type type READ getType)
 	Q_PROPERTY(QString path READ getPath)
+	Q_PROPERTY(QSize size READ getSize)
 
 public:
 	enum Type {
@@ -18,14 +20,19 @@ public:
 	};
 	Type getType() const { return type; }
 	QString getPath() const { return path; }
+	QSize getSize() const { return size; }
+
+	void loadMetadata();
 
 	File() {}
-	File(const File& other) : path(other.getPath()), type(other.getType()) {}
-	File(const QString& _path, const Type& _type) : path(_path), type(_type) {}
+	File(const File& other) : path(other.getPath()) {}
+	File(const QString& _path) : path(_path) {}
 
 private:
 	QString path;
 	Type type;
+	QSize size;
+	bool metadataLoaded = false;
 };
 
 #endif // FILE_H
