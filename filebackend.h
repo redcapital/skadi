@@ -7,6 +7,7 @@
 #include <QString>
 #include <QImageReader>
 #include <QFileInfo>
+#include <QStringList>
 #include <file.h>
 
 class FileBackend : public QObject
@@ -21,7 +22,7 @@ private:
 	void initFromSingleFile(const QFileInfo& file);
 
 public:
-	bool setArguments(int argc, char* argv[]);
+	bool setArguments(const QStringList& arguments);
 	Q_INVOKABLE void prev();
 	Q_INVOKABLE void next();
 	File* getCurrentFile() const;

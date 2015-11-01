@@ -5,14 +5,13 @@ QT += qml quick widgets
 CONFIG += c++11
 
 SOURCES += main.cpp \
-	app.cpp \
 	qmlengine.cpp \
-    filebackend.cpp
+	filebackend.cpp
 
-HEADERS += app.h \
+HEADERS += \
 	qmlengine.h \
-    filebackend.h \
-    file.h
+	filebackend.h \
+	file.h
 
 RESOURCES += qml.qrc
 

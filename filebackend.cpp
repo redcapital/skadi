@@ -3,11 +3,11 @@
 #include <QDir>
 #include "filebackend.h"
 
-bool FileBackend::setArguments(int argc, char *argv[])
+bool FileBackend::setArguments(const QStringList& arguments)
 {
 	this->files.clear();
-	if (argc > 1) {
-		QFileInfo info(argv[1]);
+	if (arguments.size() > 1) {
+		QFileInfo info(arguments.at(1));
 		reader.setFileName(info.absoluteFilePath());
 		if (info.exists() && info.isFile() && reader.canRead()) {
 			this->initFromSingleFile(info);
