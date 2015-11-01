@@ -93,4 +93,19 @@ ApplicationWindow {
 		anchors.centerIn: parent
 		visible: image.status == Image.Loading
 	}
+
+	DropArea {
+		anchors.fill: parent
+		onDropped: {
+			if (drop.hasUrls) {
+				var urls = []
+				for (var i = 0; i < drop.urls.length; i++) {
+					urls.push(drop.urls[i])
+				}
+				if (backend.setArgumentsFromQml(urls)) {
+					drop.accept()
+				}
+			}
+		}
+	}
 }

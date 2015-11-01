@@ -8,6 +8,7 @@
 #include <QImageReader>
 #include <QFileInfo>
 #include <QStringList>
+#include <QVariantList>
 #include <file.h>
 
 class FileBackend : public QObject
@@ -22,7 +23,8 @@ private:
 	void initFromSingleFile(const QFileInfo& file);
 
 public:
-	bool setArguments(const QStringList& arguments);
+	void setArguments(const QStringList& arguments);
+	Q_INVOKABLE bool setArgumentsFromQml(const QVariantList& arguments);
 	Q_INVOKABLE void prev();
 	Q_INVOKABLE void next();
 	File* getCurrentFile() const;

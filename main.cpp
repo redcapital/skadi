@@ -10,10 +10,15 @@ int main(int argc, char *argv[])
 	QGuiApplication::setOrganizationName("skadi");
 
 	FileBackend backend;
-	backend.setArguments(QGuiApplication::arguments());
 	QmlEngine engine;
 	engine.addImportPath("qrc:/");
 	engine.initialize(backend);
+
+	QStringList arguments = QGuiApplication::arguments();
+	if (arguments.size() > 1) {
+		arguments.removeFirst();
+		backend.setArguments(arguments);
+	}
 
 	return app.exec();
 }

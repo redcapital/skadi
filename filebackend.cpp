@@ -1,18 +1,35 @@
 #include <QDebug>
 #include <QFileInfo>
 #include <QDir>
+#include <QUrl>
+#include <QDebug>
 #include "filebackend.h"
 
-bool FileBackend::setArguments(const QStringList& arguments)
+void FileBackend::setArguments(const QStringList& arguments)
 {
 	this->files.clear();
-	if (arguments.size() > 1) {
-		QFileInfo info(arguments.at(1));
+	if (!arguments.empty()) {
+		QFileInfo info(arguments.at(0));
 		reader.setFileName(info.absoluteFilePath());
 		if (info.exists() && info.isFile() && reader.canRead()) {
 			this->initFromSingleFile(info);
-			return true;
 		}
+	}
+	emit currentFileChanged();
+}
+
+bool FileBackend::setArgumentsFromQml(const QVariantList& arguments)
+{
+	QStringList list;
+	for (auto &item : arguments) {
+		QUrl url(item.toString());
+		if (url.isLocalFile()) {
+			list.append(url.toLocalFile());
+		}
+	}
+	if (!list.empty()) {
+		this->setArguments(list);
+		return true;
 	}
 	return false;
 }
