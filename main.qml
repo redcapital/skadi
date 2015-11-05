@@ -1,16 +1,22 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.2
 import QtQuick.Layouts 1.1
+import QtQuick.Window 2.2
 import com.github.galymzhan 0.1
 
 ApplicationWindow {
+	property bool fullScreen: false
+
+	id: appWindow
 	visible: true
 	width: 640
 	height: 480
 	title: backend.file ? backend.file.path : 'Skadi image viewer'
+	visibility: fullScreen ? Window.FullScreen : Window.Windowed
 
 	Flickable {
 		id: imageView
+		focus: true
 		anchors.fill: parent
 		contentWidth: image.width
 		contentHeight: image.height
@@ -39,20 +45,8 @@ ApplicationWindow {
 			onFileChanged: imageView.scaleToFit()
 		}
 
-		Keys.onPressed: {
-			switch (event.key) {
-				case (Qt.Key_Right):
-					backend.next()
-					break
-				case (Qt.Key_Left):
-					backend.prev()
-					break
-			}
-		}
-
 		AnimatedImage {
 			id: image
-			focus: true
 			fillMode: Image.Stretch
 			visible: backend.file
 			onStatusChanged: playing = (status == AnimatedImage.Ready)
@@ -84,6 +78,20 @@ ApplicationWindow {
 						}
 					}
 				}
+			}
+		}
+
+		Keys.onPressed: {
+			switch (event.key) {
+				case (Qt.Key_Right):
+					backend.next()
+					break
+				case (Qt.Key_Left):
+					backend.prev()
+					break
+				case (Qt.Key_F):
+					appWindow.fullScreen = !appWindow.fullScreen
+					break
 			}
 		}
 	}
