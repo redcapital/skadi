@@ -9,9 +9,9 @@ class File : public QObject
 {
 	Q_OBJECT
 	Q_ENUMS(Type)
-	Q_PROPERTY(Type type READ getType)
-	Q_PROPERTY(QString path READ getPath)
-	Q_PROPERTY(QSize size READ getSize)
+	Q_PROPERTY(Type type READ getType CONSTANT)
+	Q_PROPERTY(QString path READ getPath CONSTANT)
+	Q_PROPERTY(QSize size READ getSize CONSTANT)
 
 public:
 	enum Type {
