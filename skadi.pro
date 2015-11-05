@@ -1,13 +1,13 @@
 TEMPLATE = app
 
-QT += qml quick widgets
+QT += qml quick widgets svg
 
 CONFIG += c++11
 
 SOURCES += main.cpp \
 	qmlengine.cpp \
 	filebackend.cpp \
-    file.cpp
+	file.cpp
 
 HEADERS += \
 	qmlengine.h \
