@@ -16,6 +16,7 @@ ApplicationWindow {
 
 	Flickable {
 		id: imageView
+		visible: backend.file
 		focus: true
 		anchors.fill: parent
 		contentWidth: image.width
@@ -48,7 +49,6 @@ ApplicationWindow {
 		AnimatedImage {
 			id: image
 			fillMode: Image.Stretch
-			visible: backend.file
 			onStatusChanged: playing = (status == AnimatedImage.Ready)
 			source: backend.file ? 'file://' + backend.file.path : ''
 			width: backend.file ? backend.file.size.width * imageView.scaleFactor : 0

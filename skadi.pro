@@ -14,10 +14,12 @@ HEADERS += \
 	filebackend.h \
 	file.h
 
-RESOURCES += qml.qrc
+RESOURCES += qml/qml.qrc
+
+ICON = skadi.icns
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
-QML_IMPORT_PATH =
+QML_IMPORT_PATH = qml/
 
 # Default rules for deployment.
 include(deployment.pri)
