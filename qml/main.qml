@@ -11,7 +11,7 @@ ApplicationWindow {
 	visible: true
 	width: 640
 	height: 480
-	title: backend.file ? backend.file.path : 'Skadi image viewer'
+	title: backend.file ? backend.file.path : 'skadi image viewer'
 	visibility: fullScreen ? Window.FullScreen : Window.Windowed
 
 	Flickable {

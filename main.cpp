@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 {
 	QGuiApplication app(argc, argv);
 	QGuiApplication::setApplicationName("skadi");
-	QGuiApplication::setApplicationDisplayName("Skadi image viewer");
+	QGuiApplication::setApplicationDisplayName("skadi image viewer");
 	QGuiApplication::setOrganizationName("skadi");
 
 	FileBackend backend;
