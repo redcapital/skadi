@@ -30,14 +30,14 @@ QtObject {
 	}
 
 	function zoomIn() {
-		var newScale = scaleFactor + 0.06
+		var newScale = scaleFactor * 1.2
 		if (newScale * backend.file.size.width < 16000 && newScale * backend.file.size.height < 16000) {
 			scaleFactor = newScale
 		}
 	}
 
 	function zoomOut() {
-		var newScale = scaleFactor - 0.06
+		var newScale = scaleFactor * 0.8
 		if (newScale > 0 && newScale * backend.file.size.width > 10 && newScale * backend.file.size.height > 10) {
 			scaleFactor = newScale
 		}
