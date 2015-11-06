@@ -4,5 +4,7 @@
         <file>Awesome.qml</file>
         <file>qmldir</file>
         <file>fontawesome-webfont.woff</file>
+        <file>App.qml</file>
+        <file>Viewport.qml</file>
     </qresource>
 </RCC>

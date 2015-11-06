@@ -1,1 +1,2 @@
 singleton Awesome 0.1 Awesome.qml
+singleton App 0.1 App.qml
