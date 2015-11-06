@@ -3,6 +3,7 @@ import QtQuick.Controls 1.2
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.2
 import com.github.galymzhan 0.1
+import '.'
 
 ApplicationWindow {
 	property bool fullScreen: false
@@ -13,6 +14,10 @@ ApplicationWindow {
 	height: 480
 	title: backend.file ? backend.file.path : 'skadi image viewer'
 	visibility: fullScreen ? Window.FullScreen : Window.Windowed
+
+	FontLoader {
+		source: 'fontawesome-webfont.woff'
+	}
 
 	Flickable {
 		id: imageView
@@ -114,6 +119,25 @@ ApplicationWindow {
 					drop.accept()
 				}
 			}
+		}
+	}
+
+	Column {
+		anchors.centerIn: parent
+		visible: !backend.file
+		spacing: 20
+
+		Text {
+			text: 'Drop an image file, folder or a selection of those here'
+			wrapMode: Text.WordWrap
+			font.pointSize: 20
+		}
+		Text {
+			anchors.horizontalCenter: parent.horizontalCenter
+			font.family: 'FontAwesome'
+			font.pointSize: 100
+			color: '#bdc3c7'
+			text: Awesome.file_image_o
 		}
 	}
 }
