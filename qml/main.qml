@@ -53,6 +53,7 @@ ApplicationWindow {
 
 		AnimatedImage {
 			id: image
+			asynchronous: true
 			fillMode: Image.Stretch
 			onStatusChanged: playing = (status == AnimatedImage.Ready)
 			source: backend.file ? 'file://' + backend.file.path : ''
