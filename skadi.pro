@@ -7,12 +7,14 @@ CONFIG += c++11
 SOURCES += main.cpp \
 	qmlengine.cpp \
 	filebackend.cpp \
-	file.cpp
+	file.cpp \
+	appeventfilter.cpp
 
 HEADERS += \
 	qmlengine.h \
 	filebackend.h \
-	file.h
+	file.h \
+	appeventfilter.h
 
 RESOURCES += qml/qml.qrc
 

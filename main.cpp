@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include "filebackend.h"
 #include "qmlengine.h"
+#include "appeventfilter.h"
 
 int main(int argc, char *argv[])
 {
@@ -10,6 +11,8 @@ int main(int argc, char *argv[])
 	QGuiApplication::setOrganizationName("skadi");
 
 	FileBackend backend;
+	AppEventFilter filter(backend);
+	app.installEventFilter(&filter);
 	QmlEngine engine;
 	engine.addImportPath("qrc:/");
 	engine.initialize(backend);
