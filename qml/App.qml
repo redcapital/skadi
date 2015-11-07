@@ -9,8 +9,12 @@ QtObject {
 	id: app
 	readonly property string title: backend.file ? backend.file.path : 'skadi image viewer'
 	property bool fullScreen: false
-	property real scaleFactor: 1
+	property real scaleFactor: baseScale * Math.pow(1.2, zoomLevel)
+
+	// private properties
 	property var viewport
+	property real baseScale: 1
+	property int zoomLevel: 0
 
 	function toggleFullScreen() {
 		fullScreen = !fullScreen
@@ -21,30 +25,36 @@ QtObject {
 			return
 		}
 		var size = backend.file.size
-		scaleFactor = Qt.binding(function() {
+		baseScale = Qt.binding(function() {
 			if (size.width <= app.viewport.width && size.height <= app.viewport.height) {
 				return 1
 			}
 			return Math.min(app.viewport.width / size.width, app.viewport.height / size.height)
 		})
+		zoomLevel = 0
 	}
 
-	function zoomIn() {
-		var newScale = scaleFactor * 1.2
-		if (newScale * backend.file.size.width < 16000 && newScale * backend.file.size.height < 16000) {
-			scaleFactor = newScale
-		}
+	function scaleToOriginalSize() {
+		baseScale = 1
+		zoomLevel = 0
 	}
 
-	function zoomOut() {
-		var newScale = scaleFactor * 0.8
-		if (newScale > 0 && newScale * backend.file.size.width > 10 && newScale * backend.file.size.height > 10) {
-			scaleFactor = newScale
+	function zoom(zoomingIn) {
+		var newLevel = zoomLevel + (zoomingIn ? 1 : -1)
+		var newScale = baseScale * Math.pow(1.2, newLevel)
+		if (zoomingIn) {
+			if (newScale * backend.file.size.width > 16000 || newScale * backend.file.size.height > 16000) {
+				return
+			}
+		} else {
+			if (newScale * backend.file.size.width < 2 || newScale * backend.file.size.height < 2) {
+				return
+			}
 		}
+		zoomLevel = newLevel
 	}
 
 	function setViewport(newViewport) {
 		viewport = newViewport
-		scaleFactor = 1
 	}
 }

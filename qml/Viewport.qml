@@ -33,9 +33,9 @@ Item {
 				height: Math.max(viewport.height, image.height)
 				onWheel: {
 					if (wheel.angleDelta.y > 0) {
-						App.zoomIn()
+						App.zoom(true)
 					} else if (wheel.angleDelta.y < 0) {
-						App.zoomOut()
+						App.zoom(false)
 					}
 				}
 			}
@@ -59,6 +59,8 @@ Item {
 			case (Qt.Key_F):
 				App.toggleFullScreen()
 				break
+			case (Qt.Key_0):
+				App.scaleToOriginalSize()
 		}
 	}
 }
