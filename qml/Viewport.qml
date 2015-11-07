@@ -51,16 +51,23 @@ Item {
 	Keys.onPressed: {
 		switch (event.key) {
 			case (Qt.Key_Right):
+			case (Qt.Key_L):
 				backend.next()
 				break
 			case (Qt.Key_Left):
+			case (Qt.Key_H):
 				backend.prev()
 				break
 			case (Qt.Key_F):
 				App.toggleFullScreen()
 				break
+			case (Qt.Key_T):
+				App.scaleToFit()
+				break
 			case (Qt.Key_0):
+			case (Qt.Key_O):
 				App.scaleToOriginalSize()
+				break
 		}
 	}
 }
