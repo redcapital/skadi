@@ -7,23 +7,13 @@ import '.'
 
 ApplicationWindow {
 	visible: true
-	width: 640
-	height: 480
+	width: 800
+	height: 600
 	title: App.title
 	visibility: App.fullScreen ? Window.FullScreen : Window.Windowed
 
 	FontLoader {
 		source: 'fontawesome-webfont.woff'
-	}
-
-	Viewport {
-		anchors.fill: parent
-		visible: backend.file
-	}
-
-	Connections {
-		target: backend
-		onFileChanged: App.scaleToFit()
 	}
 
 	DropArea {
@@ -41,22 +31,30 @@ ApplicationWindow {
 		}
 	}
 
-	Column {
-		anchors.centerIn: parent
-		visible: !backend.file
-		spacing: 20
+	Connections {
+		target: backend
+		onFileChanged: App.scaleToFit()
+	}
 
-		Text {
-			text: 'Drop an image file, folder or a selection of those here'
-			wrapMode: Text.WordWrap
-			font.pointSize: 20
+	ColumnLayout {
+		anchors.fill: parent
+
+		Viewport {
+			visible: backend.status == FileBackend.Ready
+			Layout.fillHeight: true
+			Layout.fillWidth: true
 		}
-		Text {
+
+		Panel {
 			anchors.horizontalCenter: parent.horizontalCenter
-			font.family: 'FontAwesome'
-			font.pointSize: 100
-			color: '#bdc3c7'
-			text: Awesome.file_image_o
+			Layout.alignment: Qt.AlignBottom
+			Layout.bottomMargin: 10
+			Layout.topMargin: 10
 		}
+	}
+
+	StartScreen {
+		anchors.centerIn: parent
+		visible: backend.status == FileBackend.Empty
 	}
 }

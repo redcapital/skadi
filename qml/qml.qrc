@@ -6,5 +6,8 @@
         <file>fontawesome-webfont.woff</file>
         <file>App.qml</file>
         <file>Viewport.qml</file>
+        <file>StartScreen.qml</file>
+        <file>PanelButton.qml</file>
+        <file>Panel.qml</file>
     </qresource>
 </RCC>

@@ -7,6 +7,8 @@
 
 void FileBackend::setArguments(const QStringList& arguments)
 {
+	status = Status::Loading;
+	emit statusChanged();
 	this->files.clear();
 	if (!arguments.empty()) {
 		QFileInfo info(arguments.at(0));
@@ -15,6 +17,8 @@ void FileBackend::setArguments(const QStringList& arguments)
 			this->initFromSingleFile(info);
 		}
 	}
+	status = (this->getCurrentFile() != nullptr) ? Status::Ready : Status::Empty;
+	emit statusChanged();
 	emit currentFileChanged();
 }
 
@@ -88,4 +92,9 @@ void FileBackend::prev()
 		this->currentFile--;
 		emit currentFileChanged();
 	}
+}
+
+FileBackend::Status FileBackend::getStatus() const
+{
+	return status;
 }

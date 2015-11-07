@@ -14,5 +14,6 @@ void QmlEngine::initialize(FileBackend &backend)
 #endif
 	this->rootContext()->setContextProperty("backend", &backend);
 	qmlRegisterType<File>("com.github.galymzhan", 0, 1, "File");
+	qmlRegisterType<FileBackend>("com.github.galymzhan", 0, 1, "FileBackend");
 	this->load(QUrl("qrc:/main.qml"));
 }

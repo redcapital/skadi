@@ -26,6 +26,9 @@ QtObject {
 		}
 		var size = backend.file.size
 		baseScale = Qt.binding(function() {
+			if (!app.viewport) {
+				return 1
+			}
 			if (size.width <= app.viewport.width && size.height <= app.viewport.height) {
 				return 1
 			}

@@ -2,7 +2,6 @@ import QtQuick 2.0
 import '.'
 
 Item {
-	property real scaleFactor: 1
 	id: viewport
 	focus: true
 
@@ -14,6 +13,7 @@ Item {
 		contentHeight: image.height
 		boundsBehavior: Flickable.StopAtBounds
 		flickableDirection: Flickable.HorizontalAndVerticalFlick
+		clip: true
 
 		AnimatedImage {
 			id: image
