@@ -11,4 +11,5 @@ QtObject {
 	readonly property string search_plus              : "\uf00e"
 	readonly property string arrows_alt               : "\uf0b2"
 	readonly property string desktop                  : "\uf108"
+	readonly property string question                 : "\uf128"
 }

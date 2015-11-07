@@ -1,5 +1,5 @@
 import QtQuick 2.2
-import QtQuick.Controls 1.2
+import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.2
 import com.github.galymzhan 0.1
@@ -35,6 +35,8 @@ ApplicationWindow {
 		target: backend
 		onFileChanged: App.scaleToFit()
 	}
+
+	AboutDialog {}
 
 	ColumnLayout {
 		anchors.fill: parent

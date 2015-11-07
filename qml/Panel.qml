@@ -15,6 +15,9 @@ Row {
 		enabled: backend.status == FileBackend.Ready
 		onClicked: backend.next()
 	}
+
+	PanelSeparator {}
+
 	PanelButton {
 		text: Awesome.arrows_alt
 		enabled: backend.status == FileBackend.Ready
@@ -35,8 +38,16 @@ Row {
 		enabled: backend.status == FileBackend.Ready
 		onClicked: App.zoom(true)
 	}
+
+	PanelSeparator {}
+
 	PanelButton {
 		text: Awesome.desktop
 		onClicked: App.toggleFullScreen()
+	}
+
+	PanelButton {
+		text: Awesome.question
+		onClicked: App.showAbout()
 	}
 }

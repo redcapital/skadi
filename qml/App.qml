@@ -13,6 +13,7 @@ QtObject {
 
 	// private properties
 	property var viewport
+	property var aboutDialog
 	property real baseScale: 1
 	property int zoomLevel: 0
 
@@ -57,7 +58,19 @@ QtObject {
 		zoomLevel = newLevel
 	}
 
+	function showAbout() {
+		aboutDialog.open()
+	}
+
+	function closeAbout() {
+		aboutDialog.close()
+	}
+
 	function setViewport(newViewport) {
 		viewport = newViewport
+	}
+
+	function setAboutDialog(dialog) {
+		aboutDialog = dialog
 	}
 }

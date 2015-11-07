@@ -9,5 +9,8 @@
         <file>StartScreen.qml</file>
         <file>PanelButton.qml</file>
         <file>Panel.qml</file>
+        <file>PanelSeparator.qml</file>
+        <file>about.html</file>
+        <file>AboutDialog.qml</file>
     </qresource>
 </RCC>
