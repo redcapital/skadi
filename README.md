@@ -1,3 +1,7 @@
-Simple image viewer.
+skadi is a simple image viewer for OS X. 
 
-Just wanted to contribute a free, lightweight, simple image viewer for OS X. Although it runs on other platforms, it can't compete with existing viewers on *nix.
+It can jump to a previous/next file in a directory, similar to Windows' default image viewer.
+
+![screenshot](screenshot.png)
+
+Installation: Download the latest version from https://github.com/galymzhan/skadi/releases, unpack and move into ~/Applications
