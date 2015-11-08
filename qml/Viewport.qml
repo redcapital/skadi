@@ -68,6 +68,12 @@ Item {
 			case (Qt.Key_O):
 				App.scaleToOriginalSize()
 				break
+			case (Qt.Key_Plus):
+				App.zoom(true)
+				break
+			case (Qt.Key_Minus):
+				App.zoom(false)
+				break
 			case (Qt.Key_P):
 				App.togglePanel()
 				break
