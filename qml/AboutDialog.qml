@@ -10,6 +10,8 @@ Dialog {
 	Component.onCompleted: App.setAboutDialog(this)
 
 	contentItem: ColumnLayout {
+		spacing: 0
+
 		TextArea {
 			Layout.preferredWidth: 500
 			Layout.preferredHeight: 340

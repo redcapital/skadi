@@ -61,12 +61,15 @@ Item {
 			case (Qt.Key_F):
 				App.toggleFullScreen()
 				break
-			case (Qt.Key_T):
+			case (Qt.Key_I):
 				App.scaleToFit()
 				break
 			case (Qt.Key_0):
 			case (Qt.Key_O):
 				App.scaleToOriginalSize()
+				break
+			case (Qt.Key_P):
+				App.togglePanel()
 				break
 		}
 	}

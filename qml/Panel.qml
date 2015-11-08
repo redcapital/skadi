@@ -45,7 +45,10 @@ Row {
 		text: Awesome.desktop
 		onClicked: App.toggleFullScreen()
 	}
-
+	PanelButton {
+		text: Awesome.angle_double_down
+		onClicked: App.togglePanel()
+	}
 	PanelButton {
 		text: Awesome.question
 		onClicked: App.showAbout()

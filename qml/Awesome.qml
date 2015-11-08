@@ -12,4 +12,5 @@ QtObject {
 	readonly property string arrows_alt               : "\uf0b2"
 	readonly property string desktop                  : "\uf108"
 	readonly property string question                 : "\uf128"
+	readonly property string angle_double_down        : "\uf103"
 }

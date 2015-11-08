@@ -9,6 +9,7 @@ QtObject {
 	id: app
 	readonly property string title: backend.file ? backend.file.path : 'skadi image viewer'
 	property bool fullScreen: false
+	property bool panelVisible: true
 	property real scaleFactor: baseScale * Math.pow(1.2, zoomLevel)
 
 	// private properties
@@ -72,5 +73,9 @@ QtObject {
 
 	function setAboutDialog(dialog) {
 		aboutDialog = dialog
+	}
+
+	function togglePanel() {
+		panelVisible = !panelVisible
 	}
 }

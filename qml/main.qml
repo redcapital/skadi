@@ -40,6 +40,7 @@ ApplicationWindow {
 
 	ColumnLayout {
 		anchors.fill: parent
+		spacing: 0
 
 		Viewport {
 			visible: backend.status == FileBackend.Ready
@@ -48,10 +49,28 @@ ApplicationWindow {
 		}
 
 		Panel {
+			id: panel
 			anchors.horizontalCenter: parent.horizontalCenter
 			Layout.alignment: Qt.AlignBottom
-			Layout.bottomMargin: 10
-			Layout.topMargin: 10
+			Layout.topMargin: App.panelVisible ? 10 : 0
+			Layout.bottomMargin: App.panelVisible ? 10 : 0
+			Layout.maximumHeight: App.panelVisible ? implicitHeight : 0
+
+			Behavior on Layout.maximumHeight {
+				NumberAnimation {
+					duration: 100
+				}
+			}
+			Behavior on Layout.topMargin {
+				NumberAnimation {
+					duration: 100
+				}
+			}
+			Behavior on Layout.bottomMargin {
+				NumberAnimation {
+					duration: 100
+				}
+			}
 		}
 	}
 
