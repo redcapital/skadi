@@ -7,15 +7,18 @@ pragma Singleton
  */
 QtObject {
 	id: app
+
 	readonly property string title: {
 		if (!backend.file) {
 			return 'skadi image viewer'
 		}
-		var title = backend.file.path
+		var title = [backend.file.path]
+		title.push(backend.file.size.width + 'x' + backend.file.size.height)
+		title.push(Math.max(1, Math.round(scaleFactor * 100)) + '%')
 		if (rotation > 0) {
-			title += ', ' + rotation + '°'
+			title.push(rotation + '°')
 		}
-		return title
+		return title.join(', ')
 	}
 
 	property bool fullScreen: false
