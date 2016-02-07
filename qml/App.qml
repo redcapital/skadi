@@ -47,10 +47,16 @@ QtObject {
 			if (!app.viewport) {
 				return 1
 			}
-			if (size.width <= app.viewport.width && size.height <= app.viewport.height) {
+			// When the image is rotated, width might become height and vice-versa
+			var widthAttr = 'width', heightAttr = 'height'
+			if (rotation > 0 && rotation != 180) {
+				widthAttr = 'height'
+				heightAttr = 'width'
+			}
+			if (size[widthAttr] <= app.viewport.width && size[heightAttr] <= app.viewport.height) {
 				return 1
 			}
-			return Math.min(app.viewport.width / size.width, app.viewport.height / size.height)
+			return Math.min(app.viewport.width / size[widthAttr], app.viewport.height / size[heightAttr])
 		})
 		zoomLevel = 0
 	}
