@@ -33,7 +33,7 @@ ApplicationWindow {
 
 	Connections {
 		target: backend
-		onFileChanged: App.scaleToFit()
+		onFileChanged: App.fileChanged()
 	}
 
 	AboutDialog {}

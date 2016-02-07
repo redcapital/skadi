@@ -7,10 +7,21 @@ pragma Singleton
  */
 QtObject {
 	id: app
-	readonly property string title: backend.file ? backend.file.path : 'skadi image viewer'
+	readonly property string title: {
+		if (!backend.file) {
+			return 'skadi image viewer'
+		}
+		var title = backend.file.path
+		if (rotation > 0) {
+			title += ', ' + rotation + '°'
+		}
+		return title
+	}
+
 	property bool fullScreen: false
 	property bool panelVisible: true
 	property real scaleFactor: baseScale * Math.pow(1.2, zoomLevel)
+	property real rotation: 0
 
 	// private properties
 	property var viewport
@@ -20,6 +31,11 @@ QtObject {
 
 	function toggleFullScreen() {
 		fullScreen = !fullScreen
+	}
+
+	function fileChanged() {
+		rotation = 0
+		scaleToFit()
 	}
 
 	function scaleToFit() {
@@ -81,5 +97,13 @@ QtObject {
 
 	function showInFinder() {
 		backend.showInFinder()
+	}
+
+	function rotateClockwise() {
+		rotation = (rotation + 90) % 360
+	}
+
+	function rotateCounterClockwise() {
+		rotation = (rotation + 270) % 360
 	}
 }

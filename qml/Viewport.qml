@@ -25,6 +25,7 @@ Item {
 			height: backend.file ? backend.file.size.height * App.scaleFactor : 0
 			x: (viewport.width < image.width) ? 0 : (viewport.width - image.width) / 2
 			y: (viewport.height < image.height) ? 0 : (viewport.height - image.height) / 2
+			rotation: App.rotation
 
 			MouseArea {
 				x: 0
@@ -79,6 +80,12 @@ Item {
 				break
 			case (Qt.Key_S):
 				App.showInFinder()
+				break
+			case (Qt.Key_Comma):
+				App.rotateCounterClockwise()
+				break
+			case (Qt.Key_Period):
+				App.rotateClockwise()
 				break
 		}
 	}

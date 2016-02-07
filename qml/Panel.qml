@@ -51,6 +51,20 @@ Row {
 		onClicked: App.zoom(true)
 	}
 	PanelButton {
+		text: Awesome.rotate_right
+		tooltip: 'Rotate clockwise'
+		hotkey: '.'
+		enabled: backend.status == FileBackend.Ready
+		onClicked: App.rotateClockwise()
+	}
+	PanelButton {
+		text: Awesome.rotate_left
+		tooltip: 'Rotate counter-clockwise'
+		hotkey: ','
+		enabled: backend.status == FileBackend.Ready
+		onClicked: App.rotateCounterClockwise()
+	}
+	PanelButton {
 		text: Awesome.folder
 		tooltip: 'Show in Finder'
 		hotkey: 'S'

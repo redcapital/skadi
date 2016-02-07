@@ -14,4 +14,6 @@ QtObject {
 	readonly property string question                 : "\uf128"
 	readonly property string angle_double_down        : "\uf103"
 	readonly property string folder                   : "\uf07b"
+	readonly property string rotate_right             : "\uf01e"
+	readonly property string rotate_left              : "\uf0e2"
 }
