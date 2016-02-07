@@ -78,4 +78,8 @@ QtObject {
 	function togglePanel() {
 		panelVisible = !panelVisible
 	}
+
+	function showInFinder() {
+		backend.showInFinder()
+	}
 }

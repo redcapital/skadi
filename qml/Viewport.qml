@@ -77,6 +77,9 @@ Item {
 			case (Qt.Key_P):
 				App.togglePanel()
 				break
+			case (Qt.Key_S):
+				App.showInFinder()
+				break
 		}
 	}
 }

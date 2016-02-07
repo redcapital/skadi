@@ -2,7 +2,7 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QUrl>
-#include <QDebug>
+#include <QProcess>
 #include "filebackend.h"
 
 void FileBackend::setArguments(const QStringList& arguments)
@@ -97,4 +97,23 @@ void FileBackend::prev()
 FileBackend::Status FileBackend::getStatus() const
 {
 	return status;
+}
+
+void FileBackend::showInFinder() const
+{
+	auto file = getCurrentFile();
+	if (file == nullptr) {
+		return;
+	}
+	// Code taken from Qt Creator project
+	// https://github.com/qtproject/qt-creator/blob/397e7f48437dc57e6333c3a358ad24d3e891920d/src/plugins/coreplugin/fileutils.cpp#L68
+	QStringList scriptArgs;
+	scriptArgs << QLatin1String("-e")
+						 << QString::fromLatin1("tell application \"Finder\" to reveal POSIX file \"%1\"")
+																	 .arg(file->getPath());
+	QProcess::execute(QLatin1String("/usr/bin/osascript"), scriptArgs);
+	scriptArgs.clear();
+	scriptArgs << QLatin1String("-e")
+						 << QLatin1String("tell application \"Finder\" to activate");
+	QProcess::execute(QLatin1String("/usr/bin/osascript"), scriptArgs);
 }

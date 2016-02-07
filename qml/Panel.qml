@@ -50,6 +50,13 @@ Row {
 		enabled: backend.status == FileBackend.Ready
 		onClicked: App.zoom(true)
 	}
+	PanelButton {
+		text: Awesome.folder
+		tooltip: 'Show in Finder'
+		hotkey: 'S'
+		enabled: backend.status == FileBackend.Ready
+		onClicked: App.showInFinder()
+	}
 
 	PanelSeparator {}
 

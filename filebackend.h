@@ -29,6 +29,7 @@ public:
 	Q_INVOKABLE bool setArgumentsFromQml(const QVariantList& arguments);
 	Q_INVOKABLE void prev();
 	Q_INVOKABLE void next();
+	Q_INVOKABLE void showInFinder() const;
 	File* getCurrentFile() const;
 	Status getStatus() const;
 
