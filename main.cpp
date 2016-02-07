@@ -6,9 +6,10 @@
 int main(int argc, char *argv[])
 {
 	QGuiApplication app(argc, argv);
-	QGuiApplication::setApplicationName("skadi");
-	QGuiApplication::setApplicationDisplayName("skadi image viewer");
-	QGuiApplication::setOrganizationName("skadi");
+	app.setApplicationName("skadi");
+	app.setApplicationDisplayName("skadi image viewer");
+	app.setOrganizationName("skadi");
+	app.setOrganizationDomain("redcapital.github.com");
 
 	FileBackend backend;
 	AppEventFilter filter(backend);

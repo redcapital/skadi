@@ -2,15 +2,28 @@ import QtQuick 2.2
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.2
+import Qt.labs.settings 1.0
 import com.github.galymzhan 0.1
 import '.'
 
 ApplicationWindow {
 	visible: true
-	width: 800
-	height: 600
+	width: settings.width
+	height: settings.height
 	title: App.title
 	visibility: App.fullScreen ? Window.FullScreen : Window.Windowed
+
+	Settings {
+		id: settings
+		category: 'ApplicationWindow'
+		property int width: 800
+		property int height: 600
+	}
+
+	Component.onDestruction: {
+		settings.width = width
+		settings.height = height
+	}
 
 	FontLoader {
 		source: 'fontawesome-webfont.woff'
