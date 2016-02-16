@@ -4,6 +4,8 @@ It can jump to a previous/next file in a directory, similar to Windows' default 
 
 ![screenshot](screenshot.png)
 
+skadi supports all image formats supported by Qt, this covers most of the popular formats: BMP, GIF, JPEG, PNG, WebP, SVG, TGA, TIFF, WBMP and others.
+
 # Installation
 
 Download the latest version from https://github.com/redcapital/skadi/releases, unpack and move into `~/Applications`.
